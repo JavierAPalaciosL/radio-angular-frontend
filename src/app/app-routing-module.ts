@@ -1,7 +1,18 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import {CountriesComponent} from './features/locations/country/countries-component';
+import {StatesComponent} from './features/locations/states/states-component';
+import {CitiesComponent} from './features/locations/city/cities-component';
 
-const routes: Routes = [];
+const routes: Routes = [
+
+  { path: '', redirectTo: 'countries', pathMatch: 'full' },
+
+  { path: 'countries', component: CountriesComponent },
+  { path: 'countries/:countryId/states', component: StatesComponent },
+  { path: 'countries/:countryId/states/:stateId/cities', component: CitiesComponent },
+
+];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],

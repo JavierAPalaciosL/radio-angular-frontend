@@ -1,0 +1,24 @@
+<div class="flex flex-wrap gap-x-15 gap-y-15 max-h-[60vh] ml-[5%] p-[1%] overflow-y-auto">
+
+  @for (states of this.getWrapperStates().state; track states.id) {
+
+    <app-card-country-states-component>
+
+      @if(states.urlImageMap === null){
+        <div slot="flag-or-image-or-map" appMapDirective [lat] = "states.latitude" [lon] = "states.longitude" class="w-full h-[100%] border"></div>
+      } @else {
+          <img slot="flag-or-image-or-map" class="w-[100%] h-[100%]" src="{{states.urlImageMap}}">
+      }
+
+      <p slot="content-card" class="text-3xl font-bold">{{states.name}} , {{states.stateCode}}</p>
+      <p slot="content-card" class="text-2xl font-medium">Latitude: {{states.latitude}}</p>
+      <p slot="content-card" class="text-2xl font-medium">Longitude: {{states.longitude}}</p>
+
+    </app-card-country-states-component>
+
+  }
+
+</div>
+
+<app-slice-component (emitPageNumber)="getStatesAPI(this.countryId, $event.valueOf(), this.getSizePage())" [slice]="10" [size]="this.getWrapperStates().size" [totalPages]="this.getRoundedSize()"></app-slice-component>
+

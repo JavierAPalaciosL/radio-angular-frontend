@@ -1,19 +1,23 @@
 import { NgModule, provideBrowserGlobalErrorListeners } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
 import { AppRoutingModule } from './app-routing-module';
 import { App } from './app';
+import {FeaturesModule} from './features/features-module';
+import {HttpClientModule, provideHttpClient, withInterceptorsFromDi} from '@angular/common/http';
 
 @NgModule({
   declarations: [
-    App
+    App,
+
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FeaturesModule,
   ],
   providers: [
-    provideBrowserGlobalErrorListeners()
+    provideBrowserGlobalErrorListeners(),
+    provideHttpClient(withInterceptorsFromDi())
   ],
   bootstrap: [App]
 })

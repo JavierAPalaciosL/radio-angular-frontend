@@ -1,1 +1,37 @@
-/* You can add global styles to this file, and also import other style files */
+@import "tailwindcss" ;
+
+.light{
+  --color-custom-primary: #fff;
+  --color-text: #000;
+  --color-header-custom: #E2FFF6;
+  --bg-color-button: rgba(0, 255, 119, 0.76);
+  --bg-menu-bar: #fff
+}
+
+.dark{
+  --color-custom-primary: #000;
+  --color-text: #fff;
+  --color-header-custom: #ff0000;
+  --bg-color-button: #0624ff;
+}
+
+@theme{
+
+  --breakpoint-*: initial;
+  --breakpoint-sm: 480px;
+  --breakpoint-md: 768px;
+  --breakpoint-lg: 976px;
+
+  --color-custom-primary: var(--color-custom-primary);
+  --color-text-custom: var(--color-text);
+  --color-border-custom: var(--color-text);
+
+  --color-header-custom: var(--color-header-custom);
+
+  --color-button-custom: var(--bg-color-button);
+  --color-bg-menu:  var(--bg-menu-bar);
+}
+
+
+body{
+}
