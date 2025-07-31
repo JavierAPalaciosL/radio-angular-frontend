@@ -2,7 +2,7 @@
 
   @for (states of this.getWrapperStates().state; track states.id) {
 
-    <app-card-country-states-component>
+    <app-card-country-states-component [urlNavigate]="`/countries/${this.countryId}/states/${states.stateCode}/cities`">
 
       @if(states.urlImageMap === null){
         <div slot="flag-or-image-or-map" appMapDirective [lat] = "states.latitude" [lon] = "states.longitude" class="w-full h-[100%] border"></div>

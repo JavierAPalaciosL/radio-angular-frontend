@@ -1,1 +1,19 @@
-<p>cities-component works!</p>
+<div class="flex flex-wrap gap-x-15 gap-y-15 max-h-[60vh] ml-[5%] p-[1%] overflow-y-auto">
+
+  @for (city of this.getWrapperCity().cities; track city.latitude+city.longitude) {
+
+    <app-card-country-states-component [urlNavigate]="`/countries/${this.countryId}/states/${this.stateId}/cities/${city.name}/info`">
+
+      <div slot="flag-or-image-or-map" appMapDirective [lat] = "city.latitude" [lon] = "city.longitude" class="w-full h-[100%] border"></div>
+
+      <p slot="content-card" class="text-3xl font-bold">{{city.name}}</p>
+      <p slot="content-card" class="text-2xl font-medium">Latitude: {{city.latitude}}</p>
+      <p slot="content-card" class="text-2xl font-medium">Longitude: {{city.longitude}}</p>
+
+    </app-card-country-states-component>
+
+  }
+
+</div>
+
+<app-slice-component (emitPageNumber)="getStatesAPI(this.countryId, this.stateId, $event.valueOf(), this.getSizePage())" [slice]="10" [size]="this.getWrapperCity().totalCountries" [totalPages]="this.getRoundedSize()"></app-slice-component>

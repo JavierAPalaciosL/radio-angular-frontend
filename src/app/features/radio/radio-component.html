@@ -1,1 +1,34 @@
-<p>radio-component works!</p>
+<div class="mx-auto p-4 bg-white rounded-lg ">
+  <h2 class="text-2xl font-semibold mb-4">Stations</h2>
+  <div class="overflow-x-auto overflow-y-auto max-h-50">
+    <table class="w-full table-auto border-collapse">
+      <thead>
+      <tr>
+        <th class="sticky top-0 px-4 py-2 bg-white border-b text-left text-sm font-medium text-gray-700">Name</th>
+        <th class="sticky top-0 px-4 py-2 bg-white border-b text-left text-sm font-medium text-gray-700">Web</th>
+        <th class="sticky top-0 px-4 py-2 bg-white border-b text-left text-sm font-medium text-gray-700">Votes</th>
+        <th class="sticky top-0 px-4 py-2 bg-white border-b text-left text-sm font-medium text-gray-700">Play</th>
+      </tr>
+      </thead>
+
+      <tbody class="divide-y divide-gray-200">
+        @for (radioElement of this.radioArray; track radioElement.geoLat+radioElement.geoLong) {
+          <tr>
+            <td class="px-4 py-2 text-sm text-gray-800">{{radioElement.name}}</td>
+            <td class="px-4 py-2 text-sm text-gray-800">
+              <a [href]=radioElement.homePage target="_blank" class="text-blue-500">Visit!</a>
+            </td>
+            <td class="px-4 py-2 text-sm text-gray-800">{{radioElement.votes}}</td>
+            <td class="px-4 py-2 text-sm text-gray-800">
+
+              <button (click)="playSong(radioElement.url, radioElement.name)" class="font-medium p-[1%] rounded-2xl shadow w-[100%] bg-button-custom">
+                Play
+              </button>
+
+            </td>
+          </tr>
+        }
+      </tbody>
+    </table>
+  </div>
+</div>

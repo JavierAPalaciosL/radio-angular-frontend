@@ -20,6 +20,8 @@ export class SliceComponent {
   isFinalSlice : boolean = false;
   protected readonly Array = Array;
 
+  referenceButtonId: number = 0;
+
   previous() {
     if(this.sliceAt != 0){
       this.sliceAt = this.sliceAt - this.slice;
@@ -36,6 +38,7 @@ export class SliceComponent {
   }
 
   changePage(sliceAt: number) {
+    this.referenceButtonId = sliceAt;
     this.emitPageNumber.emit(sliceAt);
   }
 }

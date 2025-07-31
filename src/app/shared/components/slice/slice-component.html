@@ -12,8 +12,9 @@
     @for (_ of Array.from({length: (this.totalPages <= 10) ? this.totalPages : this.slice}); track $index) {
 
       @if (this.sliceAt + $index + 1 <= this.totalPages) {
-        <button (click)="changePage(this.sliceAt + $index )"
-          class="font-semibold bg-button-custom px-3 py-1 border-10 border-button-custom text-text-custom hover:bg-button-custom/90 transition">
+
+        <button [ngClass]="(this.referenceButtonId === this.sliceAt + $index) ? 'bg-white-400' : 'bg-button-custom'"  (click)="changePage(this.sliceAt + $index)"
+          class="font-semibold  px-3 py-1 border-10 border-button-custom text-text-custom hover:bg-green-200/90 transition">
           {{ this.sliceAt + $index + 1 }}
         </button>
       }

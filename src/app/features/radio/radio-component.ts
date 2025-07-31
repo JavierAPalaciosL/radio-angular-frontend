@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import {Component, EventEmitter, Input, Output} from '@angular/core';
+import Radio from '../../core/models/Radio';
 
 @Component({
   selector: 'app-radio-component',
@@ -7,5 +8,12 @@ import { Component } from '@angular/core';
   styleUrl: './radio-component.css'
 })
 export class RadioComponent {
+
+  @Input() public radioArray!: Radio[];
+  @Output() public radioChange = new EventEmitter<{ nameStation: string, url: string }>();
+
+  playSong(url: string, nameStation: string) {
+    this.radioChange.emit({ nameStation: nameStation, url: url });
+  }
 
 }
