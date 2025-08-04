@@ -5,14 +5,14 @@
     <app-card-country-states-component [urlNavigate]="`/countries/${this.countryId}/states/${states.stateCode}/cities`">
 
       @if(states.urlImageMap === null){
-        <div slot="flag-or-image-or-map" appMapDirective [lat] = "states.latitude" [lon] = "states.longitude" class="w-full h-[100%] border"></div>
+        <div slot="flag-or-image-or-map" appMapDirective [lat] = "states.latitude" [lon] = "states.longitude" class="w-full h-[100%] border z-0 max-lg:w-[35vw]"></div>
       } @else {
-          <img slot="flag-or-image-or-map" class="w-[100%] h-[100%]" src="{{states.urlImageMap}}">
+          <img slot="flag-or-image-or-map" class="w-[100%] h-[100%] z-0" src="{{states.urlImageMap}}">
       }
 
-      <p slot="content-card" class="text-3xl font-bold">{{states.name}} , {{states.stateCode}}</p>
-      <p slot="content-card" class="text-2xl font-medium">Latitude: {{states.latitude}}</p>
-      <p slot="content-card" class="text-2xl font-medium">Longitude: {{states.longitude}}</p>
+      <p slot="content-card" class="text-3xl font-bold max-lg:text-[1.02rem]">{{states.name}} , {{states.stateCode}}</p>
+      <p slot="content-card" class="text-2xl font-medium max-lg:text-[1.02rem]">Latitude: {{states.latitude}}</p>
+      <p slot="content-card" class="text-2xl font-medium max-lg:text-[1.02rem]">Longitude: {{states.longitude}}</p>
 
     </app-card-country-states-component>
 
@@ -20,5 +20,5 @@
 
 </div>
 
-<app-slice-component (emitPageNumber)="getStatesAPI(this.countryId, $event.valueOf(), this.getSizePage())" [slice]="10" [size]="this.getWrapperStates().size" [totalPages]="this.getRoundedSize()"></app-slice-component>
+<app-slice-component (emitPageNumber)="getStatesAPI(this.countryId, $event.valueOf(), this.getSizePage())" [slice]="7" [size]="this.getWrapperStates().size" [totalPages]="this.getRoundedSize()"></app-slice-component>
 

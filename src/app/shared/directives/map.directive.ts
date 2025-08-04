@@ -1,41 +1,50 @@
-import {AfterViewInit, Directive, ElementRef, Input} from '@angular/core';
+import {AfterViewInit, Directive, ElementRef, Input, OnDestroy} from '@angular/core';
 import * as L from 'leaflet';
 
 @Directive({
   selector: '[appMapDirective]',
   standalone: false
 })
-export class MapDirective implements AfterViewInit {
+export class MapDirective implements AfterViewInit, OnDestroy {
   @Input() lat!: number;
   @Input() lon!: number;
-  @Input() iCanShowMarker!: boolean;
-  @Input() zoom!: number;
+  @Input() iCanShowMarker = false;
+  @Input() zoom = 10;
 
-  @Input() markers!: {lat: number; lon: number}[];
+  private map!: L.Map;
+  private resizeHandler = () => this.onResize();
 
   constructor(private el: ElementRef<HTMLDivElement>) {}
 
   ngAfterViewInit() {
-    const map = L.map(this.el.nativeElement, {
+    this.map = L.map(this.el.nativeElement, {
       center: [this.lat, this.lon],
-      zoom: (this.zoom === undefined) ? 10 : this.zoom,
+      zoom: this.zoom,
     });
 
     L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
       attribution: '&copy; OpenStreetMap contributors'
-    }).addTo(map);
+    }).addTo(this.map);
 
-    if(this.iCanShowMarker !== undefined){
+    this.map.whenReady(() => {
+      this.map.invalidateSize();
 
-      L.marker([this.lat, this.lon]).addTo(map);
-
-      if (this.markers !== undefined){
-        for(var i = 0; i < this.markers.length; i++){
-          L.marker([this.markers[i].lat, this.markers[i].lon]).addTo(map);
-        }
+      if (this.iCanShowMarker) {
+        L.marker([this.lat, this.lon]).addTo(this.map);
       }
+    });
 
-    }
+    window.addEventListener('resize', this.resizeHandler);
+  }
 
+  private onResize() {
+    if (!this.map) return;
+    this.map.invalidateSize();
+    this.map.setView([this.lat, this.lon], this.map.getZoom(), { animate: false });
+  }
+
+  ngOnDestroy() {
+    window.removeEventListener('resize', this.resizeHandler);
+    this.map?.remove();
   }
 }

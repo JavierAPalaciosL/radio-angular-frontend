@@ -1,9 +1,12 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import {LocationsModule} from './locations/locations-module';
+import { SingInComponent } from './sing-in/sing-in-component';
 
 @NgModule({
-  declarations: [],
+  declarations: [
+
+  ],
   imports: [
     CommonModule,
     LocationsModule,

@@ -1,49 +1,55 @@
 @if (this.wrapperRadioCityAndWeather !== undefined) {
-  <div class=" flex">
+  <div class=" flex w-[100vw]">
 
-    <div class="w-[40%] p-[1%]">
+    <div class="w-[40%] p-[1%] max-lg:w-[90%]">
       <app-weather-component>
 
         <ng-container slot="wiki-info">
-          <h1 class="text-4xl">{{this.wrapperRadioCityAndWeather.city.name}}</h1>
-          <a [href]="`https://www.wikidata.org/wiki/${this.wrapperRadioCityAndWeather.city.wikiData}`" target="_blank" class="text-blue-500">See {{this.wrapperRadioCityAndWeather.city.name}} in WikiData</a>
+          <h1 class="text-4xl max-lg:text-[1rem]">{{this.wrapperRadioCityAndWeather.city.name}}</h1>
+          <a [href]="`https://www.wikidata.org/wiki/${this.wrapperRadioCityAndWeather.city.wikiData}`" target="_blank" class="text-blue-500 max-lg:text-[0.8rem]">See {{this.wrapperRadioCityAndWeather.city.name}} in WikiData</a>
         </ng-container>
 
         <div class="flex" slot="weather-info">
           <div class="flex flex-col">
-            <p class="text-4xl font-bold">{{this.wrapperRadioCityAndWeather.weather.main.temp}}</p>
-            <p class="text-2xl font-medium">Feels Like {{ this.wrapperRadioCityAndWeather.weather.main.feels_like }}</p>
-            <p class="font-extralight">Max {{this.wrapperRadioCityAndWeather.weather.main.temp_max}} Min {{this.wrapperRadioCityAndWeather.weather.main.temp_min}}</p>
+            <p class="text-4xl font-bold max-lg:text-[1.9rem]">{{this.kelvinToCelsius(this.wrapperRadioCityAndWeather.weather.main.temp)}} C</p>
+            <p class="text-2xl font-medium max-lg:text-[1rem]">Feels Like {{ this.kelvinToCelsius(this.wrapperRadioCityAndWeather.weather.main.feels_like) }}</p>
+            <p class="font-extralight max-lg:text-[0.9rem]">Max {{this.kelvinToCelsius(this.wrapperRadioCityAndWeather.weather.main.temp_max)}} Min {{this.kelvinToCelsius(this.wrapperRadioCityAndWeather.weather.main.temp_min)}}</p>
           </div>
         </div>
+
+        <p slot="coords" class="text-2xl max-lg:text-[0.9rem]">Lat: {{this.wrapperRadioCityAndWeather.city.latitude}}</p>
+        <p slot="coords" class="text-2xl max-lg:text-[0.9rem]">Lon: {{this.wrapperRadioCityAndWeather.city.longitude}}</p>
+
       </app-weather-component>
 
     </div>
 
-    <div class="w-[60%] h-[35vh] mr-[1%] border-1 shadow-2xs shadow" appMapDirective [zoom]=8 [lat]=this.wrapperRadioCityAndWeather.city.latitude [lon]=this.wrapperRadioCityAndWeather.city.longitude [markers]="this.markers" [iCanShowMarker]="true">
+    <div class="w-[60%] h-[35vh] mr-[1%] border-1 shadow-2xs shadow" appMapDirective [zoom]=8 [lat]=this.wrapperRadioCityAndWeather.city.latitude [lon]=this.wrapperRadioCityAndWeather.city.longitude [iCanShowMarker]="true">
 
     </div>
 
   </div>
 
-  <div class="flex flex-col p-[1%] gap-y-[2vh]">
+  <div class="flex flex-col p-[1%] gap-y-[2vh] max-lg:gap-y-0 max-lg:p-0">
 
     <app-radio-component (radioChange)="play($event)" [radioArray]="this.wrapperRadioCityAndWeather.radioStations"></app-radio-component>
 
   </div>
 
+  @if (this.wrapperRadioCityAndWeather.radioStations.length !== 0) {
+    <div>
 
-  <div>
+      <h2 class="text-2xl font-extralight max-lg:text-[0.9rem]">Reproduciendo {{this.nameStation}}</h2>
 
-    <h2 class="text-2xl font-extralight">Reproduciendo {{this.nameStation}}</h2>
+      <audio [src]=this.url
+             controls
+             preload="auto"
+             autoPlay=true
+             class="w-[100%] max-lg:h-[3.4vh]"
+      ></audio>
+    </div>
+  }
 
-    <audio [src]=this.url
-           controls
-           preload="auto"
-           autoPlay=true
-           class="w-[100%]"
-    ></audio>
-  </div>
 
 
 

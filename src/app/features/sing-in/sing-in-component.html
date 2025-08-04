@@ -1,0 +1,98 @@
+<div class="flex items-center justify-center px-4">
+  <div class="bg-white rounded-2xl shadow-2xl w-full max-w-md p-8">
+    <form
+      [formGroup]="loginForm"
+      (ngSubmit)="onSubmit()"
+      class="flex flex-col"
+    >
+      <div class="text-center mb-6">
+        <p class="text-5xl font-extrabold">Sign In</p>
+        <p class="text-gray-500">The information country into a space!</p>
+      </div>
+
+      <div class="mt-4">
+        <h1 class="text-xl font-semibold text-gray-700">Email address</h1>
+        <div class="relative mt-2">
+          <span class="absolute inset-y-0 left-0 pl-3 flex items-center">
+            <i class="fas fa-user text-gray-400"></i>
+          </span>
+          <input
+            formControlName="email"
+            type="email"
+            placeholder="you@example.com"
+            class="pl-10 pr-10 py-2 border border-gray-300 rounded-lg w-full text-base focus:outline-none focus:ring-2 focus:ring-indigo-400"
+          />
+          <span class="absolute inset-y-0 right-0 pr-3 flex items-center">
+            <i
+              class="fas fa-info-circle text-gray-400"
+              title="Extra information"
+            ></i>
+          </span>
+        </div>
+        <div *ngIf="loginForm.get('email')?.touched && loginForm.get('email')?.invalid" class="mt-1 text-sm text-red-500">
+          Email invalid!
+        </div>
+      </div>
+
+      <div class="mt-6">
+        <h1 class="text-xl font-semibold text-gray-700">Password</h1>
+        <div class="relative mt-2">
+          <input
+            formControlName="password"
+            [type]="hidePassword ? 'password' : 'text'"
+            placeholder="••••••••"
+            class="pr-10 py-2 border border-gray-300 rounded-lg w-full text-base focus:outline-none focus:ring-2 focus:ring-indigo-400"
+          />
+          <span
+            class="absolute inset-y-0 right-0 pr-3 flex items-center cursor-pointer"
+            (click)="hidePassword = !hidePassword"
+          >
+            <i
+              [ngClass]="hidePassword ? 'fas fa-eye' : 'fas fa-eye-slash'"
+              class="text-gray-400"
+            ></i>
+          </span>
+        </div>
+        <div *ngIf="loginForm.get('password')?.touched && loginForm.get('password')?.invalid" class="mt-1 text-sm text-red-500">
+          password not strong
+        </div>
+      </div>
+
+      <div class="flex mt-6 justify-between items-center text-gray-600">
+        <label class="flex items-center">
+          <input type="checkbox" formControlName="remember" class="mr-2 h-4 w-4 text-indigo-600 border-gray-300 rounded" />
+          Remember me
+        </label>
+        <a routerLink="/forgot-password" class="text-sm text-indigo-600 hover:underline">Forgot password?</a>
+      </div>
+
+      <div class="mt-8 flex flex-col">
+        <button
+          type="submit"
+          [disabled]="loginForm.invalid"
+          class="bg-indigo-600 hover:bg-indigo-700 text-white py-2 rounded-full text-lg font-semibold disabled:opacity-50 disabled:cursor-not-allowed transition"
+        >
+          Sign in
+        </button>
+
+        <div class="flex mt-4 justify-center text-gray-600">
+          <span>Don’t have an account?</span>
+          <a routerLink="/signup" class="ml-2 text-indigo-600 hover:underline">Sign up</a>
+        </div>
+      </div>
+
+      <hr class="my-8 border-gray-200" />
+
+      <div>
+        <button
+          type="button"
+          (click)="singInWithGoogle()"
+          class="w-full flex items-center justify-center border border-gray-300 py-2 rounded-full text-base font-medium hover:bg-gray-50 transition"
+        >
+          <i class="fab fa-google mr-2 text-red-500"></i>
+          Sign in with Google
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

@@ -47,7 +47,6 @@ export class CityInfoComponent implements OnInit {
           })
         }
 
-        console.log(this.markers);
 
       }
     })
@@ -55,9 +54,16 @@ export class CityInfoComponent implements OnInit {
   }
 
   play($event:{ nameStation: string, url: string }) {
-    console.log($event);
     this.url = $event.url;
     this.nameStation = $event.nameStation;
+  }
+
+  kelvinToCelsius(kelvin: number): number {
+
+    const kelvinNumber = Number(kelvin);
+
+    const celsius = kelvinNumber - 273.15;
+    return parseFloat(celsius.toFixed(2));
   }
 
 }

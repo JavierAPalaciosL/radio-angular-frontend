@@ -1,34 +1,47 @@
-<div class="mx-auto p-4 bg-white rounded-lg ">
-  <h2 class="text-2xl font-semibold mb-4">Stations</h2>
-  <div class="overflow-x-auto overflow-y-auto max-h-50">
-    <table class="w-full table-auto border-collapse">
-      <thead>
-      <tr>
-        <th class="sticky top-0 px-4 py-2 bg-white border-b text-left text-sm font-medium text-gray-700">Name</th>
-        <th class="sticky top-0 px-4 py-2 bg-white border-b text-left text-sm font-medium text-gray-700">Web</th>
-        <th class="sticky top-0 px-4 py-2 bg-white border-b text-left text-sm font-medium text-gray-700">Votes</th>
-        <th class="sticky top-0 px-4 py-2 bg-white border-b text-left text-sm font-medium text-gray-700">Play</th>
-      </tr>
-      </thead>
+@if (this.radioArray.length === 0) {
 
-      <tbody class="divide-y divide-gray-200">
-        @for (radioElement of this.radioArray; track radioElement.geoLat+radioElement.geoLong) {
-          <tr>
-            <td class="px-4 py-2 text-sm text-gray-800">{{radioElement.name}}</td>
-            <td class="px-4 py-2 text-sm text-gray-800">
-              <a [href]=radioElement.homePage target="_blank" class="text-blue-500">Visit!</a>
-            </td>
-            <td class="px-4 py-2 text-sm text-gray-800">{{radioElement.votes}}</td>
-            <td class="px-4 py-2 text-sm text-gray-800">
+  <h1 class="font-bold text-3xl mt-[10%]">Not found radio stations for this city</h1>
 
-              <button (click)="playSong(radioElement.url, radioElement.name)" class="font-medium p-[1%] rounded-2xl shadow w-[100%] bg-button-custom">
-                Play
-              </button>
+} @else {
+  <h2 class="text-2xl font-semibold mb-4 max-lg:text-[1.0rem] max-lg:mt-[2%]">Stations</h2>
+  <div class="mx-auto p-4 rounded-lg overflow-x-auto overflow-y-auto max-h-[30vh] max-lg:p-0
+  [@media(max-height:900px)]:max-h-[28vh]
+  [@media(max-height:620px)]:max-h-[10vh]
 
-            </td>
-          </tr>
-        }
-      </tbody>
-    </table>
+">
+    <div>
+      <table class="w-full border-collapse">
+        <thead>
+        <tr>
+          <th class="sticky top-0 px-4 py-2 bg-white border-b text-left text-sm font-medium text-gray-700">Name</th>
+          <th class="sticky top-0 px-4 py-2 bg-white border-b text-left text-sm font-medium text-gray-700">Web</th>
+          <th class="sticky top-0 px-4 py-2 bg-white border-b text-left text-sm font-medium text-gray-700">Votes</th>
+          <th class="sticky top-0 px-4 py-2 bg-white border-b text-left text-sm font-medium text-gray-700">Play</th>
+        </tr>
+        </thead>
+
+        <tbody class="divide-y divide-gray-200">
+          @for (radioElement of this.radioArray; track radioElement.geoLat+radioElement.geoLong) {
+            <tr>
+              <td class="px-4 py-2 text-sm text-gray-800 max-lg:text-[0.76rem] max-lg:py-1">{{radioElement.name}}</td>
+              <td class="px-4 py-2 text-sm text-gray-800 max-lg:py-1">
+                <a [href]=radioElement.homePage target="_blank" class="text-blue-500">Visit!</a>
+              </td>
+              <td class="px-4 py-2 text-sm text-gray-800 max-lg:py-1">{{radioElement.votes}}</td>
+              <td class="px-4 py-2 text-sm text-gray-800 max-lg:py-1">
+
+                <button (click)="playSong(radioElement.url, radioElement.name)"
+                        class="font-medium p-[1%] rounded-2xl shadow w-[100%] bg-button-custom max-lg:w-[10vw] max-lg:py-1">
+                  Play
+                </button>
+
+              </td>
+            </tr>
+          }
+        </tbody>
+      </table>
+    </div>
   </div>
-</div>
+
+}
+

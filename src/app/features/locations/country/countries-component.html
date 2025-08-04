@@ -3,16 +3,18 @@
   <h2 class="text-text-custom font-extralight text-[19px]">I found 291 countries</h2>
 </div>
 
-<div class="flex flex-wrap gap-x-15 gap-y-15 max-h-[60vh] ml-[5%] p-[1%] overflow-y-auto">
+<div class="flex flex-wrap gap-x-15 gap-y-15 max-h-[60vh] ml-[5%] p-[1%] overflow-y-auto
+  max-lg:grid max-lg:w-[90%] max-lg:p-[5%]
+">
 
   @for (country of this.getCountries(); track $index) {
 
     <app-card-country-states-component [urlNavigate]="`/countries/${country.countryCode}/states`">
 
     <h1 slot="flag-or-image-or-map" class="text-[15vh]">{{country.emoji}}</h1>
-    <p slot="content-card" class="text-3xl font-bold">{{country.name}} , {{country.countryCode}}</p>
-    <p slot="content-card" class="text-2xl font-medium">Latitude: {{country.lat}}</p>
-    <p slot="content-card" class="text-2xl font-medium">Longitude: {{country.lon}}</p>
+    <p slot="content-card" class="text-3xl font-bold max-lg: text-[1.5rem]">{{country.name}} , {{country.countryCode}}</p>
+    <p slot="content-card" class="text-2xl font-medium max-lg: text-[1.2rem]">Latitude: {{country.lat}}</p>
+    <p slot="content-card" class="text-2xl font-medium max-lg: text-[1.2rem]">Longitude: {{country.lon}}</p>
 
   </app-card-country-states-component>
 
@@ -20,4 +22,4 @@
 
 </div>
 
-<app-slice-component (emitPageNumber)="getAllCountry($event.valueOf(), this.getSizePage())" [slice]="10" [size]="this.getWrapperCountry().totalCountries" [totalPages]="this.getRoundedSize()"></app-slice-component>
+<app-slice-component (emitPageNumber)="getAllCountry($event.valueOf(), this.getSizePage())" [slice]="7" [size]="this.getWrapperCountry().totalCountries" [totalPages]="this.getRoundedSize()"></app-slice-component>

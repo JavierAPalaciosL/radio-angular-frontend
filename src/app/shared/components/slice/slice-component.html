@@ -1,20 +1,25 @@
 <div class="flex-row-reverse flex">
 
-  <div class="flex p-[1.5%] space-x-2 overflow-x-auto">
+  <div class="flex p-[1.5%] space-x-2 overflow-x-auto
+  max-lg:grid max-lg:grid-cols-9 max-lg:grid-rows-1 max-lg:gap-x-1">
 
     <button
-      class="font-semibold bg-button-custom px-3 py-1 border-10 border-button-custom text-text-custom hover:bg-button-custom/90 transition"
+      class="font-semibold bg-button-custom px-3 py-1 border-10 border-button-custom text-text-custom hover:bg-button-custom/90 transition
+                 max-lg:w-[10vw] max-lg:h[1%] max-lg:text-[0.56rem] max-lg:px-[10%] max-lg:py-0
+      "
       (click)="previous()"
     >
       <
     </button>
 
-    @for (_ of Array.from({length: (this.totalPages <= 10) ? this.totalPages : this.slice}); track $index) {
+    @for (_ of Array.from({length: (this.totalPages <= 7) ? this.totalPages : this.slice}); track $index) {
 
       @if (this.sliceAt + $index + 1 <= this.totalPages) {
 
         <button [ngClass]="(this.referenceButtonId === this.sliceAt + $index) ? 'bg-white-400' : 'bg-button-custom'"  (click)="changePage(this.sliceAt + $index)"
-          class="font-semibold  px-3 py-1 border-10 border-button-custom text-text-custom hover:bg-green-200/90 transition">
+          class="font-semibold  px-3 py-1 border-10 border-button-custom text-text-custom hover:bg-green-200/90 transition
+                 max-lg:w-[10vw] max-lg:h[1%] max-lg:text-[0.56rem] max-lg:px-[10%] max-lg:py-0
+          ">
           {{ this.sliceAt + $index + 1 }}
         </button>
       }
@@ -22,7 +27,9 @@
     }
 
     <button
-      class="font-semibold bg-button-custom px-3 py-1 border-10 border-button-custom text-text-custom hover:bg-button-custom/90 transition"
+      class="font-semibold bg-button-custom px-3 py-1 border-10 border-button-custom text-text-custom hover:bg-button-custom/90 transition
+                 max-lg:w-[10vw] max-lg:h[1%] max-lg:text-[0.56rem] max-lg:px-[10%] max-lg:py-0
+      "
       (click)="next()"
     >
 
