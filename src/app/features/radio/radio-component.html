@@ -1,14 +1,10 @@
 @if (this.radioArray.length === 0) {
-
-  <h1 class="font-bold text-3xl mt-[10%]">Not found radio stations for this city</h1>
-
+  <h1 class="font-bold text-3xl mt-[5%]">Not found radio stations for this city</h1>
 } @else {
   <h2 class="text-2xl font-semibold mb-4 max-lg:text-[1.0rem] max-lg:mt-[2%]">Stations</h2>
-  <div class="mx-auto p-4 rounded-lg overflow-x-auto overflow-y-auto max-h-[30vh] max-lg:p-0
+  <div class="mx-auto p-4 rounded-lg overflow-x-auto overflow-y-auto max-h-[20vh] max-lg:p-0
   [@media(max-height:900px)]:max-h-[28vh]
-  [@media(max-height:620px)]:max-h-[10vh]
-
-">
+  [@media(max-height:620px)]:max-h-[10vh]">
     <div>
       <table class="w-full border-collapse">
         <thead>

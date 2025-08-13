@@ -18,6 +18,7 @@ export class CityInfoComponent implements OnInit {
   url : string = "";
   nameStation : string = "";
   markers : {lat: number; lon: number}[] = [];
+  heartIsSelected : boolean = false;
 
   constructor(private route: ActivatedRoute,  private countryService: CountryService) {}
 
@@ -64,6 +65,10 @@ export class CityInfoComponent implements OnInit {
 
     const celsius = kelvinNumber - 273.15;
     return parseFloat(celsius.toFixed(2));
+  }
+
+  selectHeart() {
+    this.heartIsSelected = !this.heartIsSelected;
   }
 
 }

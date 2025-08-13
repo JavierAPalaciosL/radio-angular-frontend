@@ -9,11 +9,14 @@ import {SliceComponent} from '../../shared/components/slice/slice-component';
 import { CityInfoComponent } from './city-info/city-info-component';
 import {WeatherComponent} from '../weather/weather-component';
 import {RadioComponent} from '../radio/radio-component';
+import { DashboardLocationsComponent } from './dashboard-locations-component';
+import {RouterOutlet} from '@angular/router';
 
 @NgModule({
-  declarations: [CitiesComponent, CountriesComponent, StatesComponent,  MapDirective, CardCountryStatesComponent, SliceComponent, CityInfoComponent, WeatherComponent, RadioComponent],
+  declarations: [CitiesComponent, CountriesComponent, StatesComponent,  MapDirective, CardCountryStatesComponent, SliceComponent, CityInfoComponent, WeatherComponent, RadioComponent, DashboardLocationsComponent],
   imports: [
     CommonModule,
+    RouterOutlet,
   ],
   exports: [CityInfoComponent],
 })

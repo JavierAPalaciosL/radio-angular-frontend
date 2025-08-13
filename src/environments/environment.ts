@@ -1,5 +1,6 @@
+declare const process: any;
+
 export const environment = {
   production: false,
-  host: 'http://localhost:8080/v1',
-
+  host: process.env['HOST'] || 'http://localhost:8080/v1',
 };

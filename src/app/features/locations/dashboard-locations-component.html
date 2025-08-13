@@ -1,0 +1,82 @@
+<header class="bg-header-custom h-[10vh] flex flex-col">
+
+  <div class=" w-[100%] h-[100%] mt-[1.3%] flex">
+
+    <div class="w-[10%] ml-[2%] mt-[0.5%]">
+      <h1 class="inline text-[22px] font-semibold max-lg:text-[15px]"
+          [ngClass]="{'animate-slide-in': getIcanShowMenuBar(),'animate-slide-out': getIcanShowMenuBar()}">
+        Radio weather</h1>
+    </div>
+
+    @if (localStorage.getItem('token') === null){
+      <div class="w-[25%] h-[85%] ml-[55%] flex
+        max-lg:ml-[30%] max-lg:w-[55%] max-lg:h-[80%] max-lg:mt-[1.0%]">
+        <button class="text-text-custom font-semibold w-[50%] bg-button-custom rounded-[18px]" (click)="navigateSingIn()">Sing In</button>
+        <button class="text-text-custom font-semibold ml-[3%] w-[50%] bg-button-custom rounded-[18px]">Sing Up</button>
+      </div>
+
+    }
+
+    @if (localStorage.getItem('token') !== null){
+      <div class="rounded-[9px] filter backdrop-blur-md drop-shadow-md p-[0.2%] w-[3.5%] h-[85%] ml-[82%] bg-bg-menu
+                  max-lg:w-[10%] max-lg:h-[70%] max-lg:mt-[1%] max-lg:ml-[72%]"
+           (click)="showDivBar()"
+      >
+        <hr class="mt-[8%] border-[1px] border-solid">
+        <hr class="mt-[30%] border-[1px] border-solid">
+        <hr class="mt-[30%] border-[1px] border-solid">
+      </div>
+    }
+
+  </div>
+
+</header>
+
+<main>
+
+  <div class="p-[1%] ml-[1%] h-[8vh] bg-custom-primary flex items-center justify-center gap-2 w-[25%]
+     max-lg:w-[100%] max-lg:mt-[2%] max-lg:p-5
+     transition-filter duration-300 ease-in-out"
+       [ngClass]="{'animate-slide-in': getIcanShowMenuBar(),'animate-slide-out': getIcanShowMenuBar()}"
+  >
+    <input
+      type="text"
+      placeholder="Something search…"
+      class="flex-1 bg-white border border-gray-300 rounded-[18px] px-4 py-2 focus:outline-none focus:ring-2 focus:ring-button-custom"
+    />
+    <button
+      class="font-semibold bg-button-custom px-6 py-2 border-2 border-button-custom rounded-[18px] text-text-custom hover:bg-button-custom/90 transition"
+    >
+      Search
+    </button>
+
+  </div>
+
+  <div class="flex">
+    @if (this.getIcanShowMenuBar()) {
+      <aside
+        class="fixed top-0 left-0 w-[15%] h-[100vh] bg-cyan-400/35 p-4 shadow z-50
+      max-lg:w-[50%]
+      "
+        [ngClass]="{'animate-slide-in': getIcanShowMenuBar(),'animate-slide-out': !getIcanShowMenuBar()}"
+      >
+        <h2 class="text-xl font-bold mb-6">Radio weather</h2>
+        <h2 class="text-3xl font-extralight mb-6">Hi {{this.getUser().name}}</h2>
+        <ul>
+          <li class="text-2xl py-2 font-semibold hover:bg-green-300 rounded"><a href="#">Me</a></li>
+          <li class="text-2xl py-2 font-semibold hover:bg-green-300 rounded"><a href="#">Country</a></li>
+          <li class="text-2xl py-2 font-semibold hover:bg-green-300 rounded"><a href="#">Radio</a></li>
+          <li class="text-2xl py-2 font-semibold hover:bg-green-300 rounded"><a href="#">Favorites</a></li>
+          <li class="text-2xl py-2 font-semibold hover:bg-green-300 rounded" (click)="logout()">Sing out</li>
+        </ul>
+      </aside>
+
+    }
+
+    <div class="flex-1 transition-filter duration-300 ease-in-out" [ngClass]="{'filter blur-sm pointer-events-none': getIcanShowMenuBar()}">
+      <router-outlet></router-outlet>
+    </div>
+
+  </div>
+
+</main>

@@ -23,6 +23,9 @@
         "build": {
           "builder": "@angular/build:application",
           "options": {
+            "define": {
+              "process.env.HOST": "\"https://radio-api-backend-latest.onrender.com\""
+            },
             "browser": "src/main.ts",
             "polyfills": [
               "zone.js"
@@ -81,6 +84,9 @@
         "test": {
           "builder": "@angular/build:karma",
           "options": {
+            "define": {
+              "process.env.HOST": "\"http://localhost:8080\""
+            },
             "polyfills": [
               "zone.js",
               "zone.js/testing"

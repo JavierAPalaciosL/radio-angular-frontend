@@ -5,7 +5,10 @@
   --color-text: #000;
   --color-header-custom: #E2FFF6;
   --bg-color-button: rgba(0, 255, 119, 0.76);
-  --bg-menu-bar: #fff
+  --bg-menu-bar: #fff;
+  --bg-color-button-hover: #00ff77;
+  --bg-color-ring: #00ffd9;
+
 }
 
 .dark{
@@ -29,7 +32,15 @@
   --color-header-custom: var(--color-header-custom);
 
   --color-button-custom: var(--bg-color-button);
+
+  --color-button-hover: var(--bg-color-button-hover);
+
   --color-bg-menu:  var(--bg-menu-bar);
+
+  --color-ring-primary: var(--bg-color-ring);
+
+  --color-text-font-custom: var(--color-text);
+
 }
 
 

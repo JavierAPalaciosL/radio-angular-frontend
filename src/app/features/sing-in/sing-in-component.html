@@ -1,4 +1,4 @@
-<div class="flex items-center justify-center px-4">
+<div class="min-h-screen flex items-center justify-center px-4">
   <div class="bg-white rounded-2xl shadow-2xl w-full max-w-md p-8">
     <form
       [formGroup]="loginForm"
@@ -6,12 +6,12 @@
       class="flex flex-col"
     >
       <div class="text-center mb-6">
-        <p class="text-5xl font-extrabold">Sign In</p>
-        <p class="text-gray-500">The information country into a space!</p>
+        <p class="text-5xl font-extrabold text-text-font-custom">Sign In</p>
+        <p class="text-text-font-custom">The information country into a space!</p>
       </div>
 
       <div class="mt-4">
-        <h1 class="text-xl font-semibold text-gray-700">Email address</h1>
+        <h1 class="text-xl font-semibold text-text-font-custom">Email address</h1>
         <div class="relative mt-2">
           <span class="absolute inset-y-0 left-0 pl-3 flex items-center">
             <i class="fas fa-user text-gray-400"></i>
@@ -20,7 +20,7 @@
             formControlName="email"
             type="email"
             placeholder="you@example.com"
-            class="pl-10 pr-10 py-2 border border-gray-300 rounded-lg w-full text-base focus:outline-none focus:ring-2 focus:ring-indigo-400"
+            class="pl-10 pr-10 py-2 border border-gray-300 rounded-lg w-full text-base focus:outline-none focus:ring-2 focus:ring-ring-primary"
           />
           <span class="absolute inset-y-0 right-0 pr-3 flex items-center">
             <i
@@ -35,13 +35,13 @@
       </div>
 
       <div class="mt-6">
-        <h1 class="text-xl font-semibold text-gray-700">Password</h1>
+        <h1 class="text-xl font-semibold text-text-font-custom">Password</h1>
         <div class="relative mt-2">
           <input
             formControlName="password"
             [type]="hidePassword ? 'password' : 'text'"
             placeholder="••••••••"
-            class="pr-10 py-2 border border-gray-300 rounded-lg w-full text-base focus:outline-none focus:ring-2 focus:ring-indigo-400"
+            class="pr-10 py-2 border border-gray-300 rounded-lg w-full text-base focus:outline-none focus:ring-2 focus:ring-ring-primary"
           />
           <span
             class="absolute inset-y-0 right-0 pr-3 flex items-center cursor-pointer"
@@ -58,26 +58,26 @@
         </div>
       </div>
 
-      <div class="flex mt-6 justify-between items-center text-gray-600">
+      <div class="flex mt-6 justify-between items-center text-text-font-custom">
         <label class="flex items-center">
-          <input type="checkbox" formControlName="remember" class="mr-2 h-4 w-4 text-indigo-600 border-gray-300 rounded" />
+          <input type="checkbox" formControlName="remember" class="mr-2 h-4 w-4 text-text-font-custom border-gray-300 rounded" />
           Remember me
         </label>
-        <a routerLink="/forgot-password" class="text-sm text-indigo-600 hover:underline">Forgot password?</a>
+        <a routerLink="/forgot-password" class="text-sm text-text-font-custom hover:underline">Forgot password?</a>
       </div>
 
       <div class="mt-8 flex flex-col">
         <button
           type="submit"
           [disabled]="loginForm.invalid"
-          class="bg-indigo-600 hover:bg-indigo-700 text-white py-2 rounded-full text-lg font-semibold disabled:opacity-50 disabled:cursor-not-allowed transition"
+          class="hover:bg-button-custom bg-button-hover text-white py-2 rounded-full text-lg font-semibold disabled:opacity-100 disabled:cursor-not-allowed transition"
         >
           Sign in
         </button>
 
-        <div class="flex mt-4 justify-center text-gray-600">
+        <div class="flex mt-4 justify-center text-text-font-custom">
           <span>Don’t have an account?</span>
-          <a routerLink="/signup" class="ml-2 text-indigo-600 hover:underline">Sign up</a>
+          <a routerLink="/signup" class="ml-2 text-text-font-custom hover:underline">Sign up</a>
         </div>
       </div>
 

@@ -9,7 +9,7 @@
 
   @for (country of this.getCountries(); track $index) {
 
-    <app-card-country-states-component [urlNavigate]="`/countries/${country.countryCode}/states`">
+    <app-card-country-states-component [urlNavigate]="`/dashboard/countries/${country.countryCode}/states`">
 
     <h1 slot="flag-or-image-or-map" class="text-[15vh]">{{country.emoji}}</h1>
     <p slot="content-card" class="text-3xl font-bold max-lg: text-[1.5rem]">{{country.name}} , {{country.countryCode}}</p>
