@@ -9,7 +9,7 @@ import { SingInComponent } from './features/sing-in/sing-in-component';
 import {DashboardLocationsComponent} from './features/locations/dashboard-locations-component';
 
 const routes: Routes = [
-  { path: '', redirectTo: 'countries', pathMatch: 'full' },
+  { path: '', redirectTo: 'dashboard/countries', pathMatch: 'full' },
 
   {
     path: 'dashboard',
