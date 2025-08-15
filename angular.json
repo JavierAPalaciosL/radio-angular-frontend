@@ -24,7 +24,7 @@
           "builder": "@angular/build:application",
           "options": {
             "define": {
-              "process.env.HOST": "\"https://radio-api-backend-latest.onrender.com/v1\""
+              "process.env.HOST": "\"http://localhost:8080/v1\""
             },
             "browser": "src/main.ts",
             "polyfills": [
@@ -34,8 +34,7 @@
             "assets": [
               {
                 "glob": "**/*",
-                "input": "public",
-
+                "input": "public"
               }
             ],
             "styles": [
@@ -45,6 +44,9 @@
           },
           "configurations": {
             "production": {
+              "define": {
+                "process.env.HOST": "\"https://radio-api-backend-latest.onrender.com/v1\""
+              },
               "budgets": [
                 {
                   "type": "initial",
@@ -60,6 +62,9 @@
               "outputHashing": "all"
             },
             "development": {
+              "define": {
+                "process.env.HOST": "\"http://localhost:8080/v1\""
+              },
               "optimization": false,
               "extractLicenses": false,
               "sourceMap": true

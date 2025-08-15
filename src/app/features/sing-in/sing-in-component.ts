@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {HttpParams} from '@angular/common/http';
+import { environment } from '../../../environments/environment';
 
 @Component({
   selector: 'app-sing-in-component',
@@ -42,7 +43,7 @@ export class SingInComponent {
       .set('access_type', 'offline')
       .set('include_granted_scopes', 'true')
       .set('response_type', 'code')
-      .set('redirect_uri', 'https://radio-api-backend-latest.onrender.com/v1/users/oauth')
+      .set('redirect_uri', `${environment.host}/users/oauth`)
       .set('client_id', '559402979834-mc1c66eku5aqt1igakm418852tfe20bn.apps.googleusercontent.com');
     const fullUrl = `${authBaseUrl}?${params.toString()}`;
 
